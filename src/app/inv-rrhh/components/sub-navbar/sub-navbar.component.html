@@ -1,3 +1,24 @@
+
 <nav class="navbar">
-   <h4>{{mensaje?.content}}</h4>
+  <button matTooltip="Anterior" class="nav-button">
+    <mat-icon>skip_previous</mat-icon>
+  </button>
+
+  
+  <button matTooltip="Siguiente" class="nav-button">
+    <mat-icon>skip_next</mat-icon>
+  </button>
+  <select  matTooltip="Pagina">
+       <option value="0">5</option>
+       <option value="30">10</option>
+       <option value="31">15</option>
+       <option value="31">20</option>
+       <option value="31">30</option>
+       <option value="31">40</option>
+  </select>
+  <button matTooltip="lista" class="nav-button">
+    <mat-icon>list</mat-icon>
+  </button>
+
+  <h4 class="nav-text">{{mensaje?.content}}</h4>
 </nav>

@@ -3,3 +3,35 @@
   overflow: hidden; /* Ocultar el desbordamiento */
 
 }
+
+
+.navbar {
+  display: flex;
+  align-items: center; /* Centra el contenedor dentro de la barra de navegación */
+  padding: 10px;
+  background-color: #f8f9fa; /* Ajusta el color según tus preferencias */
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Ajusta el espacio entre el texto y los botones */
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+h4 {
+  margin: 0;
+}
+
+.nav-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Centra horizontalmente el texto */
+  margin: 0;
+}

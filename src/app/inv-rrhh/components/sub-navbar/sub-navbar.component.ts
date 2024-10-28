@@ -4,14 +4,20 @@ import { CommonModule } from '@angular/common';
 import {SharedService} from '../../shared/shared.service'
 import {Message} from '../../interfaces/shared-interface'
 import { Subscription } from 'rxjs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 @Component({
   selector: 'app-sub-navbar',
   standalone: true,
-  imports: [CarouselModule,CommonModule],
+  imports: [CarouselModule,CommonModule,MatTooltipModule,MatIconModule,],
   templateUrl: './sub-navbar.component.html',
   styleUrl: './sub-navbar.component.css'
 })
+
+
 export class SubNavbarComponent implements OnInit{
  
   items = [

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%; /* Haz que la imagen cubra todo el contenedor */
-    height: 100%;
+  height: 100%;
   background-image: url('../../../../assets/fondo.jpeg'); /* Ruta de la imagen */
   background-size: cover; /* Ajusta la imagen para que cubra todo el área */
   background-position: center; /* Centra la imagen en el contenedor */
@@ -21,7 +21,7 @@
   background-image: url('../../../../assets/cintillo2.jpeg'); /* Ruta de la imagen */
   background-size: cover; /* Ajusta la imagen para que cubra el área */
   background-position: center; /* Centra la imagen en el header */
-  height: 20%; /* Ajusta la altura del encabezado según sea necesario */
+  height: 60px; /* Ajusta la altura del encabezado según sea necesario */
   width: 100%; /* Asegura que el header ocupe todo el ancho */
 }
 /* Header */
@@ -29,7 +29,7 @@
 
 
 app-sidebar {
-  width: 200px; /* Ajusta el ancho del sidebar */
+  width: 90px; /* Ajusta el ancho del sidebar */
   background-color: #f4f4f4;
 }
 
@@ -50,4 +50,12 @@ app-main-content {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan */
+  gap: 16px; /* Espaciado entre las tarjetas */
+  justify-content: flex-start; /* Alinea las tarjetas al inicio */
+  margin-top: 10px; /* Margen superior para separación */
 }
