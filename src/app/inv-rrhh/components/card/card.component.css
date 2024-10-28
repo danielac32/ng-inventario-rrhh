@@ -1,0 +1,8 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  width: 200px; /* Ajusta el ancho según sea necesario */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* Color blanco con 80% de opacidad */
+}

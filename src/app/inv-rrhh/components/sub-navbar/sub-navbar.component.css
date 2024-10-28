@@ -1,0 +1,5 @@
+.sub-nav {
+  display: flex; /* Usar flexbox para alinear horizontalmente */
+  overflow: hidden; /* Ocultar el desbordamiento */
+
+}

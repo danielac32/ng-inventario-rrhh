@@ -1,0 +1,44 @@
+<nav class="sidebar">
+  <ul>
+    <li>
+      <button mat-button [matMenuTriggerFor]="medicamentosMenu">Medicamentos</button>
+      <mat-menu #medicamentosMenu="matMenu">
+        @for (nombre of medicamentos; track nombre) {
+             <button mat-menu-item (click)="clickMedicamentos(nombre)" >{{ nombre }}</button>
+        }
+      </mat-menu>
+    </li>
+    <li>
+      <button mat-button [matMenuTriggerFor]="uniformesMenu">Uniformes</button>
+      <mat-menu #uniformesMenu="matMenu">
+        @for (nombre of uniformes; track nombre) {
+             <button mat-menu-item (click)="clickUniformes(nombre)">{{ nombre }}</button>
+        }
+      </mat-menu>
+    </li>
+    <li>
+      <button mat-button [matMenuTriggerFor]="odontologiaMenu">Odontología</button>
+      <mat-menu #odontologiaMenu="matMenu">
+        @for (nombre of equiposDentales; track nombre) {
+             <button mat-menu-item (click)="clickOdontologicos(nombre)">{{ nombre }}</button>
+        }
+      </mat-menu>
+
+    </li>
+    <li>
+      <button mat-button [matMenuTriggerFor]="perfil">Categorias</button>
+      <mat-menu #perfil="matMenu">
+        <button mat-menu-item>Agregar</button>
+        <button mat-menu-item>Eliminar</button>
+        <button mat-menu-item>Editar</button>
+      </mat-menu>
+    </li>
+    <li>
+      <button mat-button [matMenuTriggerFor]="perfil">Perfil</button>
+      <mat-menu #perfil="matMenu">
+        <button mat-menu-item>Salir</button>
+        <button mat-menu-item>Editar</button>
+      </mat-menu>
+    </li>
+  </ul>
+</nav>

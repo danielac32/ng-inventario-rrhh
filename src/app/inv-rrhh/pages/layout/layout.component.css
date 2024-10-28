@@ -1,0 +1,53 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Haz que la imagen cubra todo el contenedor */
+    height: 100%;
+  background-image: url('../../../../assets/fondo.jpeg'); /* Ruta de la imagen */
+  background-size: cover; /* Ajusta la imagen para que cubra todo el área */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  opacity: 0.8;
+
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+
+.header {
+  background-image: url('../../../../assets/cintillo2.jpeg'); /* Ruta de la imagen */
+  background-size: cover; /* Ajusta la imagen para que cubra el área */
+  background-position: center; /* Centra la imagen en el header */
+  height: 20%; /* Ajusta la altura del encabezado según sea necesario */
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
+}
+/* Header */
+ 
+
+
+app-sidebar {
+  width: 200px; /* Ajusta el ancho del sidebar */
+  background-color: #f4f4f4;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+app-sub-navbar {
+  background-color: #e0e0e0;
+  padding: 10px;
+}
+
+app-main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
