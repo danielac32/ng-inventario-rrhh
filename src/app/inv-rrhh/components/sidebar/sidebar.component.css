@@ -1,7 +1,8 @@
 .sidebar {
-  width: 5%;
-  background-color: #f4f4f4;
+  /*width: 5%;
+  background-color: #f4f4f4;*/
   padding: 15px;
+   position: fixed;
 }
 
 .sidebar ul {

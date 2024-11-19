@@ -1,0 +1,92 @@
+
+<!--<div class="navbar">
+	 
+</div>-->
+
+
+<!--
+<div class="card-container">
+
+  @for (item of listMedicamentos; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+
+<div class="card-container">
+
+  @for (item of listUniformes; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+
+<div class="card-container">
+
+  @for (item of listOdontologia; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+-->
+
+<div class="table-container">
+<mat-card>
+
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  	<ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+      <td mat-cell *matCellDef="let asignacion">{{ asignacion.id }}</td>
+    </ng-container>
+    
+     <!-- Descripcion Column -->
+    <ng-container matColumnDef="recibe">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Recibe</th>
+      <td mat-cell *matCellDef="let asignacion">{{ asignacion.otro }}</td>
+    </ng-container>
+
+    <!-- Descripcion Column -->
+    <ng-container matColumnDef="observación">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+      <td mat-cell *matCellDef="let asignacion">{{ asignacion.observacion }}</td>
+    </ng-container>
+
+
+    <!-- Fecha Creación Column -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Creación</th>
+      <td mat-cell *matCellDef="let asignacion">{{ asignacion.createdAt | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="lista">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lista</th>
+      <td mat-cell *matCellDef="let asignacion">
+         <button  mat-button matTooltip="Aignaciones"  [matMenuTriggerFor]="menu" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4B77D1"><path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z"/></svg></button>
+           <mat-menu #menu="matMenu">
+            @if(asignacion.productos.length > 0){
+                 @for (a of asignacion.productos; track a.id) {
+                      <button mat-menu-item  > {{ a.name }} : {{ a.quantity }}</button>
+                 }
+            }@else{
+                <button mat-menu-item  >Lista vacia</button>
+            }
+        
+           </mat-menu>
+        
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[7]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>

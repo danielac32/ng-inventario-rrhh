@@ -1,0 +1,35 @@
+<mat-card>
+<div class="login-form">
+  <div class="">
+
+    <p><strong>Nombre:</strong> {{ data.familiar.primer_nombre }} {{ data.familiar.primer_apellido }}</p>
+    <p><strong>Cédula:</strong> {{ data.familiar.cedula_familiar }}</p>
+    <p><strong>Parentesco:</strong> {{ data.familiar.parentesco }}</p>
+  </div>
+
+ 
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+    <!-- Descripcion Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.name }}</td>
+    </ng-container>
+ 
+    <!-- Stock Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</th>
+      <td mat-cell *matCellDef="let producto">{{ producto.quantity }}</td>
+    </ng-container>
+
+
+  <!-- Definición de columnas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+ 
+</div>
+</mat-card>

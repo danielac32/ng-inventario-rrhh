@@ -1,0 +1,25 @@
+
+<div class="login-form">
+  <mat-card>
+    <mat-card-content>
+    		<form [formGroup]="updateProduct" (ngSubmit)="onSubmit()" class="producto-form">
+    			<mat-form-field appearance="outline">
+			    <mat-label>Stock: ({{stock}})</mat-label>
+			    <input matInput formControlName="stock" type="number" />
+			    <mat-error *ngIf="updateProduct.get('stock')?.invalid && updateProduct.get('stock')?.touched">
+			      El stock es requerido
+			    </mat-error>
+          <mat-error *ngIf="updateProduct.get('stock')?.hasError('invalidNumber') && updateProduct.get('stock')?.touched">
+            El stock debe ser un número válido
+          </mat-error>
+			  </mat-form-field>	 
+          <br>
+          <div class="action-container">
+          <button mat-raised-button color="primary" type="submit" [disabled]="updateProduct.invalid">
+            Añadir
+          </button>
+        </div>
+    		</form>
+    </mat-card-content>
+  </mat-card>
+</div>

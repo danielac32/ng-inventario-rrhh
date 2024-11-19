@@ -1,0 +1,39 @@
+<mat-accordion>
+  <!-- Panel de reportes de Asignaciones -->
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Reportes de Asignaciones </mat-panel-title>
+      <mat-panel-description> Detalles de las asignaciones de productos </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Generar reportes de asignaciones para diferentes tipos de usuarios.</p>
+    <button mat-button (click)="generarReporteAt()">Asignaciones a Trabajadores</button>
+    <button mat-button (click)="generarReporteAf()">Asignaciones a Familiares</button>
+    <button mat-button (click)="generarReporteAo()">Asignaciones a Otros</button>
+    <button mat-button (click)="generarReporte()">Asignaciones</button>
+  </mat-expansion-panel>
+
+  <!-- Panel de reportes de Productos -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Reportes de Productos </mat-panel-title>
+      <mat-panel-description>
+        Ver reportes de inventario de productos
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>productos por categoría y más.</p>
+    <button mat-button (click)="generarReportePc()">Productos por Categoría</button>
+    <button mat-button (click)="generarReportePr()">Producto mas asignado</button>
+  </mat-expansion-panel>
+
+  <!-- Panel de reportes de Modificaciones -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Reportes de Modificaciones </mat-panel-title>
+      <mat-panel-description>
+        Histórico de cambios en productos
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Ver reportes de modificaciones realizadas en los productos.</p>
+    <button mat-button (click)="generarReporteH()">Historial de Modificaciones</button>
+  </mat-expansion-panel>
+</mat-accordion>

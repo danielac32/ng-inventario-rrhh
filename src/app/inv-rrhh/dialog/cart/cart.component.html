@@ -1,0 +1,38 @@
+
+<div class="login-form">
+  <mat-card>
+    <mat-card-content>
+
+    	@if(cart.length > 0){
+    		   <div class="cart-container">
+		  			<p>Lista de Productos</p>
+		    		<ul >
+					    <li *ngFor="let product of cart" class="cart-item">
+					       <div class="product-info">
+			                <span>{{ product.name }} : {{ product.quantity }}</span>
+			              </div>
+					      <div class="actions">
+					        <button (click)="incrementQuantity(product.id)">+</button>
+					        <button (click)="decrementQuantity(product.id)">-</button>
+					      </div>
+					    </li>
+					</ul>
+		       </div>
+		       <div class="action-container" >
+		          <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!verifyCheck">
+		            Asignar
+		          </button>
+		           <button mat-raised-button color="primary" (click)="verify()" >
+		            Verificar
+		          </button>
+		        </div>
+        }@else{
+        	<p>El carrito está vacío.</p>
+        }
+      
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+

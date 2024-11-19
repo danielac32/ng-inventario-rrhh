@@ -12,6 +12,10 @@ import {Categoria} from '../../interfaces/categorias-interface'
 import {CreateProductComponent} from '../../dialog/create-product/create-product.component'
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import {CartComponent} from '../../dialog/cart/cart.component'
+import {CategoriaComponent} from '../../dialog/categoria/categoria.component'
+import {AsignacionComponent} from '../../dialog/asignacion/asignacion.component'
+
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +24,10 @@ import { Router } from '@angular/router';
             MatMenuModule,
             MatTooltipModule,
             MatIconModule,
-            CreateProductComponent],
+            CreateProductComponent,
+            CartComponent,
+            CategoriaComponent,
+            AsignacionComponent],
 
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
@@ -41,23 +48,41 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([ruta]);
   }
 
-  clickMedicamentos(type:string){
-    this.sharedService.send({content:type});
-    this.navegar("medicamentos");
+  clickMedicamentos(type:string,id:number){
+   // this.sharedService.send({content:type});
+    this.router.navigate(['/medicamentos'], { queryParams: { categoria: id } });// this.navegar("medicamentos");
   }
-  clickUniformes(type:string){
-    this.sharedService.send({content:type});
-    this.navegar("uniformes");
+  clickUniformes(type:string,id:number){
+   // this.sharedService.send({content:type});
+    this.router.navigate(['/uniformes'], { queryParams: { categoria: id } });//this.navegar("uniformes");
   }
-  clickOdontologicos(type:string){
-    this.sharedService.send({content:type});
-    this.navegar("odontologia");
+  clickOdontologicos(type:string,id:number){
+  //  this.sharedService.send({content:type});
+    this.router.navigate(['/odontologia'], { queryParams: { categoria: id } });//this.navegar("odontologia");
   }
   
+  lista(){
+    //this.sharedService.send({content:""});
+    this.router.navigate(['/lista']);
+  }
 
+    listaCategoria(){
+    //this.sharedService.send({content:""});
+    this.router.navigate(['/listCategoria']);
+  }
 
+  listaOtros(){
+    //this.sharedService.send({content:""});
+    this.router.navigate(['/listOtros']);
+  }
 
+listPersonal(){
+  this.router.navigate(['/listTrabajador']);
+}
 
+reports(){
+  this.router.navigate(['/reports']);
+}
   loadCategoriasMedicamentos(){
     this.invService.getCategoria(0).subscribe(({categoria}) => {
        this.listMedicamentos=categoria;
@@ -89,8 +114,40 @@ export class SidebarComponent implements OnInit {
     this.loadCategoriasOdontologia();
   }
 
+  
 
 
+  asignacion(){
+    const dialogRef = this.dialog.open(AsignacionComponent, {
+     width: '25%',
+       //     height:'700px',
+      data: { message: 'Este es un mensaje de prueba' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //console.log('El diálogo se cerró');
+      //console.log('Resultado:', result);
+      //this.navegar("/");
+    });
+  }
+
+
+  carrito(){
+    const dialogRef = this.dialog.open(CartComponent, {
+     width: '300px',
+       //     height:'700px',
+      data: { message: 'Este es un mensaje de prueba' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+          if(result.res===true){
+             console.log("crear asignacion")
+             this.asignacion();
+          }
+      }
+    });
+  }
   crearProducto(){
     const dialogRef = this.dialog.open(CreateProductComponent, {
      width: '300px',
@@ -101,6 +158,22 @@ export class SidebarComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       //console.log('El diálogo se cerró');
       //console.log('Resultado:', result);
+      //this.navegar("/");
+    });
+
+  }
+
+   crearCategoria(){
+    const dialogRef = this.dialog.open(CategoriaComponent, {
+     width: '300px',
+       //     height:'700px',
+      data: { message: 'Este es un mensaje de prueba' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //console.log('El diálogo se cerró');
+      //console.log('Resultado:', result);
+      //this.navegar("/");
     });
 
   }

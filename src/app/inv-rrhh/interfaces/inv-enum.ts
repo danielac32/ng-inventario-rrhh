@@ -17,3 +17,16 @@ export enum TipoModificacion {
   SUMA="SUMA",
   RESTA="RESTA"
 }
+
+
+export enum TypeProduct {
+  MEDICAMENTOS=0,
+  EQUIPOS_ODONTOLOGICOS=1,
+  UNIFORMES=2
+} 
+
+export enum TipoAsignacion {
+  TRABAJADOR="TRABAJADOR",//0
+  FAMILIAR="FAMILIAR",//1
+  OTRO="OTRO"//2
+}

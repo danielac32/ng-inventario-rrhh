@@ -10,4 +10,9 @@ export interface ResponseCategorias {
   categoria: Categoria[];
 }
 
+ 
 
+export interface ResponseCategoriaOne {
+  categoria: Categoria;
+}
+ 

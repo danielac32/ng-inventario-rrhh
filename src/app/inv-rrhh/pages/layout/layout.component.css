@@ -30,7 +30,8 @@
 
 app-sidebar {
   width: 90px; /* Ajusta el ancho del sidebar */
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; 
+  
 }
 
 .content {

@@ -1,0 +1,94 @@
+
+<!--<div class="navbar">
+	 
+</div>-->
+
+
+<!--
+<div class="card-container">
+
+  @for (item of listMedicamentos; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+
+<div class="card-container">
+
+  @for (item of listUniformes; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+
+<div class="card-container">
+
+  @for (item of listOdontologia; track item.id) {
+            <app-card
+                [item]="item"
+             />
+        }
+</div>
+-->
+
+<div class="table-container">
+<mat-card>
+	 
+  <mat-form-field appearance="outline" color="primary">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar trabajador">
+  </mat-form-field>
+ 
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  	<ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+      <td mat-cell *matCellDef="let trabajador">{{ trabajador.id_personal }}</td>
+    </ng-container>
+
+    <!-- Descripcion Column -->
+    <ng-container matColumnDef="cedula">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cedula</th>
+      <td mat-cell *matCellDef="let trabajador">{{ trabajador.cedula }}</td>
+    </ng-container>
+
+    <!-- Código Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let trabajador">{{ trabajador.primer_nombre }}</td>
+    </ng-container>
+
+    <!-- Stock Column -->
+    <ng-container matColumnDef="apellido">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+      <td mat-cell *matCellDef="let trabajador">{{ trabajador.primer_apellido }}</td>
+    </ng-container>
+
+   
+     <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+      <td mat-cell *matCellDef="let trabajador">
+      		 <button  mat-button matTooltip="Aignaciones"  [matMenuTriggerFor]="menu" (click)="loadAsigaciones(trabajador.id_personal)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4B77D1"><path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z"/></svg></button>
+      		 <mat-menu #menu="matMenu">
+            @if(listAsignacion && listAsignacion.length > 0){
+            @for (a of listAsignacion; track a.id) {
+                  <button mat-menu-item  (click)="loadProductoAsignado(a)" >{{ a.tipo }} - {{ a.createdAt | date: 'dd/MM/yyyy' }}</button>
+             }
+           }@else{
+                <button mat-menu-item  >Lista vacia</button>
+            }
+			  
+			     </mat-menu>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>

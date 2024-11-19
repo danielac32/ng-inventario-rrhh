@@ -16,7 +16,7 @@ import {ListTipo} from '../../interfaces/createProduct-interface'
 import {InvService} from '../../services/inv.service'
 import {Categoria} from '../../interfaces/categorias-interface'
 import {ProductForm} from '../../interfaces/createProduct-interface'
-
+import { Router ,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -38,6 +38,7 @@ import {ProductForm} from '../../interfaces/createProduct-interface'
 
 export class CreateProductComponent implements OnInit {
 invService= inject(InvService);
+router=inject(Router);
 newProduct: FormGroup<Product>;
 
  selectedTipo: TipoProducto | null = null; // Inicializa como null
@@ -133,19 +134,21 @@ onSubmit() {
 
   const producto:ProductForm = {
       nombre: nombre??'',
-	  descripcion: descripcion??'',
-	  codigo: codigo??'',
-	  stock: Number(stock),
-	  tipo: tipo??'',
-	  categoriaId:Number(categoriaId)
+	    descripcion: descripcion??'',
+	    codigo: codigo??'',
+	    stock: Number(stock),
+	    tipo: tipo??'',
+	    categoriaId:Number(categoriaId)
   }
    
 
   this.invService.createProduct(producto).subscribe((response) => {
         console.log(response)
         this.dialogRef.close();
+        this.router.navigate(['/']);
     }, error => {
        console.error('Error en la solicitud :', error);
+       this.dialogRef.close();
     });
 }
 

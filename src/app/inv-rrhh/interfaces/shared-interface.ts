@@ -1,6 +1,8 @@
 export interface Message {
   title?: string;
   component?:string;
-  enable?:boolean;
-  content: string;
+  content?: string;
+  type?:number;
+  enable:boolean;
+  error:boolean;
 }
