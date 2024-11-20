@@ -51,7 +51,7 @@ invService= inject(InvService);
 router=inject(Router);
 sharedService=inject(SharedService);
 asignacion: FormGroup<Asignacion>;
-constructor() {
+constructor(public dialogRef: MatDialogRef<AsignacionComponent>) {
   	this.asignacion = new FormGroup<Asignacion>(new Asignacion());
 }
 
@@ -61,7 +61,14 @@ ngOnInit(): void {
 onSubmit() {
     if(!this.asignacion.valid) return;
     const {desde,hasta} = this.asignacion.value;
-
+    const consulta={
+        //otro:otro,
+            desde:desde,
+            hasta:hasta
+    };
+    //console.log(consulta)
+    this.invService.createReportTotal(consulta);
+    this.dialogRef.close();
 }
 
 }

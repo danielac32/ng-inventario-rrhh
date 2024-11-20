@@ -32,7 +32,7 @@ import {ProductoCategoriaComponent} from '../dialog/producto-categoria/producto-
 import {ProductoHistorialComponent} from '../dialog/producto-historial/producto-historial.component'
 import {ProductoRecordComponent} from '../dialog/producto-record/producto-record.component'
 import {AsignacionComponent} from '../dialog/asignacion/asignacion.component'
-
+import {MedicamentosComponent} from '../charts/medicamentos/medicamentos.component'
 
 
 @Component({
@@ -56,7 +56,8 @@ import {AsignacionComponent} from '../dialog/asignacion/asignacion.component'
               ProductoCategoriaComponent,
               ProductoHistorialComponent,
               ProductoRecordComponent,
-              AsignacionComponent
+              AsignacionComponent,
+              MedicamentosComponent
               ],
               changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './reports.component.html',

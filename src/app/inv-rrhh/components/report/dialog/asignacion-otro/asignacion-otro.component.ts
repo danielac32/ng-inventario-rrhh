@@ -65,7 +65,7 @@ filteredOtros = [...this.asignaciones]; // Inicializa con la lista completa
 
 
 asignacionOtro: FormGroup<AsignacionOtro>;
-constructor() {
+constructor(public dialogRef: MatDialogRef<AsignacionOtroComponent>) {
   	this.asignacionOtro = new FormGroup<AsignacionOtro>(new AsignacionOtro());
 }
 
@@ -117,13 +117,14 @@ ngOnInit(): void {
 
 onSubmit() {
     if(!this.asignacionOtro.valid) return;
-    const {otro,desde,hasta} = this.asignacionOtro.value;
+    const {/*otro,*/desde,hasta} = this.asignacionOtro.value;
     const consulta={
-    		otro:otro,
+    		//otro:otro,
             desde:desde,
             hasta:hasta
     };
-    console.log(consulta)
-
+    //console.log(consulta)
+    this.invService.createReportOtro(consulta);
+    this.dialogRef.close();
 }
 }

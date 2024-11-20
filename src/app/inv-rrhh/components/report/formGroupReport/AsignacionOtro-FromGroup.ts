@@ -15,7 +15,7 @@ export class CustomValidator{
 }
 
 export class AsignacionOtro {
-  otro= new FormControl('',[Validators.required]);
+  //otro= new FormControl('',[Validators.required]);
   desde= new FormControl('', [Validators.required]);
   hasta= new FormControl('', [Validators.required]);
 }

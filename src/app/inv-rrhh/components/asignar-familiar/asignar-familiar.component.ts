@@ -195,7 +195,7 @@ onSubmit() {
       trabajadorId: trabajadorObj.id_personal, // Asigna el ID del trabajador
       familiarId: familiarObj.id_familiar, // Asigna el ID del familiar
       //otro: '', // Si es necesario, asigna un valor a 'otro' o déjalo vacío
-      observacion: 'Entrega de productos', // Puede ser un campo opcional, agrega información relevante
+      observacion: 'Entrega de productos a familiar', // Puede ser un campo opcional, agrega información relevante
       tipo: TipoAsignacion.FAMILIAR, // El tipo de asignación
       productos: this.cart.map((producto) => ({
         id: producto.id,

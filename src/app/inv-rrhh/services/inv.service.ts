@@ -167,7 +167,47 @@ createReport(report:any){
 }
 
 
+createReportFamiliar(report:any){
+  this.httpClient.post(`${ this.baseUrl }/inv/create/report/familiar`,report, { responseType: 'blob' })
+    .subscribe((blob) => {
+      if (blob instanceof Blob) {
+        saveAs(blob, `${report.familiarId}.xlsx`);
+      } else {
+        console.error('El resultado no es un Blob');
+      }
+    }, error => {
+      console.error('File download error:', error);
+    });
+}
 
+
+createReportOtro(report:any){
+  this.httpClient.post(`${ this.baseUrl }/inv/create/report/otro`,report, { responseType: 'blob' })
+    .subscribe((blob) => {
+      if (blob instanceof Blob) {
+        saveAs(blob, `otro.xlsx`);
+      } else {
+        console.error('El resultado no es un Blob');
+      }
+    }, error => {
+      console.error('File download error:', error);
+    });
+}
+
+
+
+createReportTotal(report:any){
+  this.httpClient.post(`${ this.baseUrl }/inv/create/report/total`,report, { responseType: 'blob' })
+    .subscribe((blob) => {
+      if (blob instanceof Blob) {
+        saveAs(blob, `total.xlsx`);
+      } else {
+        console.error('El resultado no es un Blob');
+      }
+    }, error => {
+      console.error('File download error:', error);
+    });
+}
 
 
 

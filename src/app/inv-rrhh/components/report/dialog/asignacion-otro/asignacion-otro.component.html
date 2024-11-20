@@ -18,8 +18,8 @@
 		        <mat-datepicker #expPicker2></mat-datepicker>
 		      </mat-form-field>
 
-  	    	 <mat-form-field appearance="outline" class="form-field">
-			  <!--<mat-label>Trabajador</mat-label>-->
+  	    	 <!--<mat-form-field appearance="outline" class="form-field">
+			 
 			  <mat-form-field appearance="fill"  class="form-field">
 			      <input matInput [formControl]="searchControl" placeholder="Buscar..." (input)="filterOtros()" (input)="openSelect()"/>
 			  </mat-form-field>
@@ -30,14 +30,14 @@
 			       {{ n.otro }} - {{ n.observacion }}
 			    </mat-option>
 			  </mat-select>
-			 </mat-form-field>
+			 </mat-form-field>-->
 
 
 			 
 
 			  <div class="action-container">
 				  <button mat-raised-button color="primary" type="submit" [disabled]="asignacionOtro.invalid">
-				    Asignar
+				    Consultar
 				  </button>
 			  </div>
 			</form>

@@ -61,7 +61,7 @@ filteredTrabajadores = [...this.trabajador]; // Inicializa con la lista completa
 
 
 asignacionTrabajador: FormGroup<AsignacionTrabajador>;
-constructor() {
+constructor(public dialogRef: MatDialogRef<AsignacionTrabajadorComponent>) {
   	this.asignacionTrabajador = new FormGroup<AsignacionTrabajador>(new AsignacionTrabajador());
 }
 
@@ -119,11 +119,15 @@ onSubmit() {
     }
     const consulta={
     		trabajadorId: trabajadorObj.id_personal, // Asigna el ID del trabajador
+        nombre:trabajadorObj.primer_nombre,
+        apellido:trabajadorObj.primer_apellido,
+        cedula:trabajadorObj.cedula,
         desde:desde,
         hasta:hasta
     };
     //console.log(consulta)
     this.invService.createReport(consulta);
+    this.dialogRef.close();
 }
 
 

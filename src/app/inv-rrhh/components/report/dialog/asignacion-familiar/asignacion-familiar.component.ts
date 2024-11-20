@@ -63,7 +63,7 @@ filteredTrabajadores = [...this.trabajador]; // Inicializa con la lista completa
 
 
 asignacionFamiliar: FormGroup<AsignacionFamiliar>;
-constructor() {
+constructor(public dialogRef: MatDialogRef<AsignacionFamiliarComponent>) {
   	this.asignacionFamiliar = new FormGroup<AsignacionFamiliar>(new AsignacionFamiliar());
 }
 
@@ -167,12 +167,17 @@ onSubmit() {
     //console.log(trabajador,familiar,desde,hasta)
     const consulta={
     		trabajadorId: trabajadorObj.id_personal, // Asigna el ID del trabajador
-            familiarId: familiarObj.id_familiar,
-            desde:desde,
-            hasta:hasta
+        familiarId: familiarObj.id_familiar,
+        nombre:familiarObj.primer_nombre,
+        apellido:familiarObj.primer_apellido,
+        cedula:familiarObj.cedula_familiar,
+        parentesco:familiarObj.parentesco,
+        desde:desde,
+        hasta:hasta
     };
-    console.log(consulta)
-
+    //console.log(consulta)
+    this.invService.createReportFamiliar(consulta);
+    this.dialogRef.close();
 
 }
 
