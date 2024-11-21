@@ -5,10 +5,14 @@ import {MainContentComponent} from '../../components/main-content/main-content.c
 import {SidebarComponent} from '../../components/sidebar/sidebar.component'
 import {SubNavbarComponent} from '../../components/sub-navbar/sub-navbar.component'
 import { RouterOutlet } from '@angular/router';
+import {NavComponent} from '../../components/nav/nav.component'
+
+
+
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet,NavbarComponent,CardComponent,MainContentComponent,SidebarComponent,SubNavbarComponent],
+  imports: [RouterOutlet,NavComponent,NavbarComponent,CardComponent,MainContentComponent,SidebarComponent,SubNavbarComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
