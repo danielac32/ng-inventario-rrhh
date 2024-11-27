@@ -6,19 +6,27 @@ import {Message} from '../../interfaces/shared-interface'
 import { Subscription } from 'rxjs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-
+import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @Component({
   selector: 'app-sub-navbar',
   standalone: true,
-  imports: [CarouselModule,CommonModule,MatTooltipModule,MatIconModule,],
+  imports: [CarouselModule,
+            CommonModule,
+            MatTooltipModule,
+            MatIconModule
+            ],
   templateUrl: './sub-navbar.component.html',
   styleUrl: './sub-navbar.component.css'
 })
 
 
 export class SubNavbarComponent implements OnInit{
+ 
+
   public error : Boolean=false;
   public enable : Boolean=false;
 
@@ -26,6 +34,8 @@ export class SubNavbarComponent implements OnInit{
   private subscription: Subscription = new Subscription();
 
   constructor(private sharedService: SharedService) {}
+  
+ 
 
   ngOnInit() {
     this.subscription = this.sharedService.message$.subscribe((message) => {
@@ -36,8 +46,5 @@ export class SubNavbarComponent implements OnInit{
       }
     });
   }
-
-
-
 
 }

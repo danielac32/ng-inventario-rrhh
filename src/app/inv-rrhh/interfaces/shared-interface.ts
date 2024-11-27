@@ -5,4 +5,5 @@ export interface Message {
   type?:number;
   enable:boolean;
   error:boolean;
+  reload?:boolean;
 }

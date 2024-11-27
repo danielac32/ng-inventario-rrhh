@@ -29,6 +29,12 @@ import {SharedService} from '../../shared/shared.service'
 import {TipoAsignacion} from '../../interfaces/inv-enum'
  
 import {Message} from '../../interfaces/shared-interface'
+import { jsPDF } from 'jspdf';
+
+
+
+
+
 @Component({
   selector: 'app-asignar-otro',
   standalone: true,
@@ -72,6 +78,64 @@ ngOnInit(): void {
  });
 }
 
+/*
+generatePDF(acta: any) {
+  const doc = new jsPDF();
+
+  // Ruta de la imagen en la carpeta assets
+  const imgPath = 'assets/acta.png'; // Ruta relativa desde el proyecto Angular
+  
+  // Cargar la imagen desde assets
+  const img = new Image();
+  img.src = imgPath;
+
+  img.onload = () => {
+    // Agregar la imagen al PDF (ajustar posición y tamaño)
+    doc.addImage(img, 'PNG', 10, 10, 190, 25); // Ajustar tamaño y posición según sea necesario
+
+    // Agregar contenido al PDF
+    doc.setFontSize(18);
+    doc.text('ACTA DE ENTREGA', 105, 50, { align: 'center' });
+
+    doc.setFontSize(14);
+    doc.text('ASIGNACIÓN: Productos', 105, 60, { align: 'center' });
+
+    const text = `La Oficina Nacional del Tesoro, a través de la Dirección General de Recursos Humanos, y en aras de llevar mejoras a las condiciones de vida de los trabajadores, hace entrega de los medicamentos que se relacionan a continuación, a la Ciudadana SUBGEYDY FIGUEROA, titular de la Cédula de Identidad Nro. V-16.091.411, para tratamiento de su madre DILIA ARVELO.`;
+    doc.setFontSize(12);
+    doc.text(text, 15, 80, { maxWidth: 180 });
+
+    // Agregar lista ficticia de productos
+    const productos = [
+      'VALSARTAN                    1 CAJA',
+      'AMLODIPINA                   1 CAJA',
+      'ATORVASTATINA               1 CAJA',
+      'OMEGA 3                      1 FRASCO'
+    ];
+
+    let yPosition = 100;
+    productos.forEach(producto => {
+      doc.text(producto, 15, yPosition);
+      yPosition += 10;
+    });
+
+    // Agregar texto para "Autorizado por"
+    doc.text('AUTORIZADO POR:', 15, yPosition + 10);
+
+    yPosition += 20;
+    doc.text('_______________________________', 15, yPosition);
+    doc.text('ARELIS DIAZ', 15, yPosition + 10);
+    doc.text('Directora General de Recursos Humanos', 15, yPosition + 20);
+    doc.text('Oficina Nacional del Tesoro', 15, yPosition + 30);
+
+    // Descargar PDF
+    doc.save('Acta_de_Entrega.pdf');
+  };
+
+  img.onerror = (error) => {
+    console.error('Error al cargar la imagen:', error);
+  };
+}
+*/
 
 onSubmit() {
 if(!this.asignarOtro.valid) return;
@@ -95,12 +159,26 @@ if(!this.asignarOtro.valid) return;
               enable:true,
               type:1,
           };
+          let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+          };
+          this.invService.getAsignacionActa(createAsignacionDto);
           this.sharedService.sendmsg(message);
           this.sharedService.clearCart();
-       this.closeDialogEvent.emit();//mensaje para cerrar el dialog
+          //this.generatePDF(createAsignacionDto);
+
+          this.sharedService.sendmsg(reload);
+          this.closeDialogEvent.emit();//mensaje para cerrar el dialog
+          
     }, error => {
        console.error('Error en la solicitud :', error);
     });
+
+
 
 }
 

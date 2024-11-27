@@ -109,9 +109,43 @@ export class InvService {
       return this.httpClient.get<ResponseTrabajador>(`${ this.baseUrl }/inv/getTrabajadores/`, {  });
   }
 
-  createAsignacion(asig:any): Observable<any>{
+
+/*createAsignacion(asig: any): Observable<Blob> {
+    return this.httpClient.post<any>(`${this.baseUrl}/inv/create/asignacion`, asig, {
+      responseType: 'blob' as 'json', // Esto asegura que Angular no lo interprete como 'json'
+    });
+  }*/
+  /*createAsignacion(asig:any){
+      this.httpClient.post(`${ this.baseUrl }/inv/create/asignacion`,asig,{ responseType: 'blob'  })
+      .subscribe((blob) => {
+      if (blob instanceof Blob) {
+        saveAs(blob, `ACTA.pdf`);
+      } else {
+        console.error('El resultado no es un Blob');
+      }
+    }, error => {
+      console.error('File download error:', error);
+    });
+  }*/
+
+createAsignacion(asig:any): Observable<any>{
       return this.httpClient.post<any>(`${ this.baseUrl }/inv/create/asignacion`, {...asig},{  });
   }
+ 
+getAsignacionActa(asig:any){
+  this.httpClient.post(`${ this.baseUrl }/inv/create/asignacion/pdf`,asig, { responseType: 'blob' })
+    .subscribe((blob) => {
+      if (blob instanceof Blob) {
+        saveAs(blob, `acta.pdf`);
+      } else {
+        console.error('El resultado no es un Blob');
+      }
+    }, error => {
+      console.error('File download error:', error);
+    });
+}
+
+
 
   findAllAsignacion(): Observable<any> {
       return this.httpClient.get<any>(`${ this.baseUrl }/inv/findAll/asignacion/`, {  });

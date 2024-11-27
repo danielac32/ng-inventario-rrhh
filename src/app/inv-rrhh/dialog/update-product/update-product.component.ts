@@ -81,8 +81,16 @@ onSubmit() {
 	            type:1,
 	        };
 	      	this.sharedService.sendmsg(message);
+	      	let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+          	};
+          	this.sharedService.sendmsg(reload);
 	      	this.dialogRef.close();
-	      	this.router.navigate(['/']);
+	      	//this.router.navigate(['/']);
 	    }, error => {
 	       console.error('Error en la solicitud :', error);
 	       let message:Message={

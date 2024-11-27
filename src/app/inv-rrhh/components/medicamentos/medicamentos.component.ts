@@ -28,7 +28,7 @@ import {SubComponent} from '../../dialog/sub/sub.component'
 import {DetailsComponent} from '../../dialog/details/details.component'
 import {DeletePassComponent} from '../../dialog/delete-pass/delete-pass.component'
 
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-medicamentos',
   standalone: true,
@@ -69,7 +69,8 @@ export class MedicamentosComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  
+  categoria:string="";
 
 
 
@@ -111,7 +112,15 @@ remove(id:number){
               type:1,
           };
           this.sharedService.sendmsg(message);
-          this.router.navigate(['/']);
+          let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+            };
+            this.sharedService.sendmsg(reload);
+          //this.router.navigate(['/']);
    }, error => {
         console.error('Error en la solicitud :', error);
          let message:Message={
@@ -238,6 +247,13 @@ const dialogRef = this.dialog.open(SubComponent, {
     });
 }
 push(producto:Producto){
+  let message:Message={
+        title:"Añadido al carrito",
+        error:false,
+        enable:true,
+        type:4,
+    };
+    this.sharedService.sendmsg(message);      
       this.sharedService.addProduct({
         id:producto.id,
         name:producto.nombre,
@@ -277,9 +293,29 @@ filterByCategory() {
         this.dataSource.paginator.firstPage();
     }
   }
+
+
+
+   public mensaje: Message | null = null;
+  private subscription: Subscription = new Subscription();
+
+
+
+
  ngOnInit(){
+
+    this.subscription = this.sharedService.message$.subscribe((message) => {
+      if(message)
+      {
+          this.mensaje = message; 
+          if(this.mensaje?.reload){
+             this.loadMedicamentos(this.categoria);
+          }
+      }
+    }); 
   this.route.queryParams.subscribe(params => {
     const categoria = params['categoria'];
+    this.categoria=categoria;
    this.loadMedicamentos(categoria);
   });
  }

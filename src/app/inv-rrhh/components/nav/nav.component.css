@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 100px;
+  width: 90px;
 }
 
 .sidenav .mat-toolbar {
@@ -67,4 +67,11 @@
     background-image: url('../../../../assets/fondo.jpeg');  
     background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el contenedor */
     opacity: 0.9; /* Ajusta la opacidad de la imagen si lo deseas */
+}
+
+.app-sub-navbar {
+  background-size: cover; /* Ajusta la imagen para que cubra el área */
+  background-position: center; /* Centra la imagen en el header */
+  height: 60px; /* Ajusta la altura del encabezado según sea necesario */
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
 }

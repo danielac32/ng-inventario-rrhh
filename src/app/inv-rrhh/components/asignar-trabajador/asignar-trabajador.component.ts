@@ -28,6 +28,12 @@ import {ProductCart} from '../../shared/shared.cart-interface'
 import {SharedService} from '../../shared/shared.service'
 import {TipoAsignacion} from '../../interfaces/inv-enum'
  import {Message} from '../../interfaces/shared-interface'
+ import { saveAs } from 'file-saver'; // Necesitarás instalar file-saver: npm install file-saver
+ import { HttpErrorResponse } from '@angular/common/http';
+
+
+
+
 @Component({
   selector: 'app-asignar-trabajador',
   standalone: true,
@@ -148,9 +154,31 @@ onSubmit() {
         quantity: producto.quantity
       }))
     };
-    
+    /*
+this.invService.createAsignacion(createAsignacionDto).subscribe((blob: Blob) => {
+    if (blob instanceof Blob) {
+      saveAs(blob, `ACTA.pdf`);
 
-    this.invService.createAsignacion(createAsignacionDto).subscribe((response) => {
+      const message: Message = {
+        title: 'Producto asignado',
+        error: false,
+        enable: true,
+        type: 1,
+      };
+      this.sharedService.sendmsg(message);
+      this.sharedService.clearCart();
+      this.closeDialogEvent.emit();
+    } else {
+      console.error('El resultado no es un Blob');
+    }
+  },
+  (error: HttpErrorResponse) => { // Usar el tipo específico
+    console.error('Error en la solicitud:', error.message);
+  }
+);*/
+
+
+   this.invService.createAsignacion(createAsignacionDto).subscribe((response) => {
        console.log(response)
           let message:Message={
               title:"Producto asignado",
@@ -158,12 +186,23 @@ onSubmit() {
               enable:true,
               type:1,
           };
+          let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+          };
+          this.invService.getAsignacionActa(createAsignacionDto);
           this.sharedService.sendmsg(message);
           this.sharedService.clearCart();
+          this.sharedService.sendmsg(reload);
        this.closeDialogEvent.emit();//mensaje para cerrar el dialog
     }, error => {
        console.error('Error en la solicitud :', error);
     });
+
+
 
 }
 

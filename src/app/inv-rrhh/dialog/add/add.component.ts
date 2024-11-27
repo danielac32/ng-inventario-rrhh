@@ -20,6 +20,7 @@ import {SharedService} from '../../shared/shared.service'
 import {Message} from '../../interfaces/shared-interface'
 import { Router ,ActivatedRoute} from '@angular/router';
 import {TipoModificacion} from '../../interfaces/inv-enum'
+
 @Component({
   selector: 'app-add',
   standalone: true,
@@ -117,8 +118,17 @@ onSubmit() {
 	            type:1,
 	        };
 	      	this.sharedService.sendmsg(message);
+	      	let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+          	};
+          	this.sharedService.sendmsg(reload);
 	      	this.dialogRef.close();
-	      	this.router.navigate(['/']);
+	      	//this.router.navigate(['/']);
+
 	    }, error => {
 	       console.error('Error en la solicitud :', error);
 	       let message:Message={

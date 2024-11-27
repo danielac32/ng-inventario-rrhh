@@ -195,6 +195,7 @@ onSubmit() {
       trabajadorId: trabajadorObj.id_personal, // Asigna el ID del trabajador
       familiarId: familiarObj.id_familiar, // Asigna el ID del familiar
       //otro: '', // Si es necesario, asigna un valor a 'otro' o déjalo vacío
+      parentesco:familiarObj.parentesco,
       observacion: 'Entrega de productos a familiar', // Puede ser un campo opcional, agrega información relevante
       tipo: TipoAsignacion.FAMILIAR, // El tipo de asignación
       productos: this.cart.map((producto) => ({
@@ -212,8 +213,17 @@ onSubmit() {
               enable:true,
               type:1,
           };
+          let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+          };
+        this.invService.getAsignacionActa(createAsignacionDto);
        this.sharedService.sendmsg(message);
        this.sharedService.clearCart();
+       this.sharedService.sendmsg(reload);
        this.closeDialogEvent.emit();//mensaje para cerrar el dialog
     }, error => {
        console.error('Error en la solicitud :', error);
