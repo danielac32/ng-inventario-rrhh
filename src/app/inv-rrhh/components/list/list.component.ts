@@ -82,12 +82,26 @@ export class ListComponent  implements OnInit {
   loadAllProuctos(){
     this.invService.getAllProducto().subscribe(({producto}) => {
        this.all=producto;
+        if (this.all.length === 0) {
+      this.sendEmpty();
+    }
        this.dataSource = new MatTableDataSource(this.all);
        this.dataSource.paginator = this.paginator;
     }, error => {
        console.error('Error en la solicitud :', error);
     });
   }
+
+  sendEmpty(){
+         let message:Message={
+              title:"Lista vacia",
+              error:false,
+              enable:true,
+              type:3,
+          };
+         this.sharedService.sendmsg(message);
+}
+
 /*
   loadMedicamentos(){
     this.invService.getProducto(TypeProduct.MEDICAMENTOS).subscribe(({producto}) => {

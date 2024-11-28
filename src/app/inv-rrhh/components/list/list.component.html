@@ -36,6 +36,8 @@
 <div class="table-container">
 <mat-card>
 	 
+
+     @if(all.length > 0){
   <mat-form-field appearance="outline" color="primary">
     <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar productos">
   </mat-form-field>
@@ -113,5 +115,16 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[7]" showFirstLastButtons></mat-paginator>
+   }@else{
+
+  <div class = "nav-text">
+   
+    <button  mat-button matTooltip="Lista vacia" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4B77D1"><path d="M791-55 55-791l57-57 736 736-57 57ZM633-440l-80-80h167v80h-87ZM433-640l-80-80h487v80H433Zm-33 400v-80h160v80H400ZM240-440v-80h166v80H240ZM120-640v-80h86v80h-86Z"/></svg></button>
+   
+  </div>
+  
+    
+  }
+
   </mat-card>
 </div>

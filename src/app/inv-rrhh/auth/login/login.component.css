@@ -1,0 +1,31 @@
+.background-image {
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+  
+    /* Ajusta el fondo como desees, por ejemplo: */
+    background-image: url('../../../../assets/fondo.jpeg');  
+    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el contenedor */
+    opacity: 0.9; /* Ajusta la opacidad de la imagen si lo deseas */
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px; /* Adjust width as needed */
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+}

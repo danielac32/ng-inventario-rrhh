@@ -28,7 +28,7 @@ import {AsignacionComponent} from '../../dialog/asignacion/asignacion.component'
 import { RouterOutlet } from '@angular/router';
 import {SubNavbarComponent} from '../../components/sub-navbar/sub-navbar.component'
 import {NavbarComponent} from '../../components/navbar/navbar.component'
-
+import {AuthService} from '../../auth/services/auth.service'
 
 @Component({
   selector: 'app-nav',
@@ -67,6 +67,8 @@ router=inject(Router);
   sharedService=inject(SharedService);
   invService= inject(InvService);
   dialog= inject(MatDialog);
+  authService=inject(AuthService);
+
 
   listMedicamentos :Categoria[]=[]
   listUniformes :Categoria[]=[]
@@ -111,6 +113,14 @@ listPersonal(){
 
 reports(){
   this.router.navigate(['/reports']);
+}
+
+salir(){
+  this.authService.logout();
+}
+
+listaAsignaciones(){
+  this.router.navigate(['/listaAsignaciones']);
 }
   loadCategoriasMedicamentos(){
     this.invService.getCategoria(0).subscribe(({categoria}) => {

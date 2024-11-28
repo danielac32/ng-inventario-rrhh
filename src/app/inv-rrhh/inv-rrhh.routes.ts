@@ -8,24 +8,25 @@ import {ListCategoriaComponent} from './components/list-categoria/list-categoria
 import {ListTrabajadorComponent} from './components/list-trabajador/list-trabajador.component'
 import {ListOtroComponent} from './components/list-otro/list-otro.component'
 import {ReportsComponent} from './components/report/reports/reports.component'
-
+import { AuthGuard } from './auth/services/auth.guard'
+import {ListaAsignacionComponent} from './components/lista-asignacion/lista-asignacion.component'
 
 export const INV_ROUTES: Routes = [
     {
         //path: '', component: LayoutComponent, children: [
         path: '', component: LayoutComponent, children: [
-            { path: 'medicamentos', component: MedicamentosComponent, canActivate: []},
-            { path: 'uniformes', component: UniformesComponent, canActivate: []},
-            { path: 'odontologia', component: OdontologiaComponent, canActivate: []},
-            { path: 'lista', component: ListComponent, canActivate: []},
-            { path: 'listCategoria', component: ListCategoriaComponent, canActivate: []},
-            { path: 'listTrabajador', component: ListTrabajadorComponent, canActivate: []},
-            { path: 'listOtros', component: ListOtroComponent, canActivate: []},
-            { path: 'reports', component: ReportsComponent, canActivate: []},
-            //{ path: 'crear', component: CrearComponent, canActivate: [] },
+            { path: 'medicamentos', component: MedicamentosComponent, canActivate: [AuthGuard]},
+            { path: 'uniformes', component: UniformesComponent, canActivate: [AuthGuard]},
+            { path: 'odontologia', component: OdontologiaComponent, canActivate: [AuthGuard]},
+            { path: 'lista', component: ListComponent, canActivate: [AuthGuard]},
+            { path: 'listCategoria', component: ListCategoriaComponent, canActivate: [AuthGuard]},
+            { path: 'listTrabajador', component: ListTrabajadorComponent, canActivate: [AuthGuard]},
+            { path: 'listOtros', component: ListOtroComponent, canActivate: [AuthGuard]},
+            { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+            { path: 'listaAsignaciones', component: ListaAsignacionComponent, canActivate: [AuthGuard] },
             //{ path: 'actualizar', component: UpdateComponent , canActivate: []},
             //{ path: 'generar', component: GenerateComponent , canActivate: []},
-            //{ path: '', redirectTo: 'nuevo-ingreso', pathMatch: 'full' }
+            { path: '', redirectTo: 'lista', pathMatch: 'full' }
         ],
 
     }

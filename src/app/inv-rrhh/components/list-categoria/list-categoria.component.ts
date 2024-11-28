@@ -22,6 +22,9 @@ import {Categoria} from '../../interfaces/categorias-interface'
 import {DeletePassComponent} from '../../dialog/delete-pass/delete-pass.component'
 import {UpdateCategoriaComponent} from '../../dialog/update-categoria/update-categoria.component'
 
+
+ 
+
 @Component({
   selector: 'app-list-categoria',
   standalone: true,
@@ -102,7 +105,16 @@ remove(id:number){
               type:1,
           };
           this.sharedService.sendmsg(message);
-          this.router.navigate(['/']);
+          //this.router.navigate(['/']);
+          let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+        };
+        this.sharedService.sendmsg(reload);
+
 	 }, error => {
 	 	   console.error('Error en la solicitud :', error);
 	       let message:Message={

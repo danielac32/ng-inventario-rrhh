@@ -18,6 +18,10 @@ import {Categoria} from '../../interfaces/categorias-interface'
 import {ProductForm} from '../../interfaces/createProduct-interface'
 import { Router ,ActivatedRoute} from '@angular/router';
 
+import {SharedService} from '../../shared/shared.service'
+import {Message} from '../../interfaces/shared-interface'
+
+
 @Component({
   selector: 'app-create-product',
   standalone: true,
@@ -39,6 +43,7 @@ import { Router ,ActivatedRoute} from '@angular/router';
 export class CreateProductComponent implements OnInit {
 invService= inject(InvService);
 router=inject(Router);
+sharedService=inject(SharedService);
 newProduct: FormGroup<Product>;
 
  selectedTipo: TipoProducto | null = null; // Inicializa como null
@@ -145,7 +150,15 @@ onSubmit() {
   this.invService.createProduct(producto).subscribe((response) => {
         console.log(response)
         this.dialogRef.close();
-        this.router.navigate(['/']);
+        //this.router.navigate(['/']);
+        let reload:Message={
+              title:"",
+              error:false,
+              enable:false,
+              type:0,
+              reload:true
+        };
+        this.sharedService.sendmsg(reload);
     }, error => {
        console.error('Error en la solicitud :', error);
        this.dialogRef.close();
